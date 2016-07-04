@@ -1,0 +1,39 @@
+(*) Introduction
+
+The name of this program is Pinky. Pinky is going to be a chess
+interface for FICS. Initially, we need to get all the elements of the
+interface ready; then we will implement the network functionality. If
+you're interested in working in the network part of Pinky, look up
+``FICS style 12'' which is the protocol we will be using to talk to
+FICS. See
+
+          http://www.freechess.org/Help/HelpFiles/style12.html
+
+(*) Pieces 
+
+The pieces are currently not the original ones; we will draw original
+pieces for a public release. They're currently 44x44 pixels. In
+production, 
+
+(*) Namespaces
+
+I suppose we should be wrapping the whole application around a
+namespace; I will do this soon. If you have experience, go ahead.
+
+(*) Picking a square
+
+When the user clicks on a square, we capture the coordinates of the
+click --- call them (x,y). To discover which square was clicked, we
+round x down to the nearest multiple of f --- for example, f = 50
+pixels, the size of a square. For y, we round it up to the nearest
+multiple of f. So the left corner of the clicked square is
+
+                        ((x/f) * f, (y/f) * f).
+
+Having the square, we draw a frame around the square. The frame is drawn
+by changing the devices's brush to wxTRANSPARENT, since we only care
+about the border of the square. To set the color of the frame, we change
+the pen of the device from black to red. 
+
+We need to improve the painting of the border to something stronger
+looking.

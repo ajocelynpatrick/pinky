@@ -1,0 +1,16 @@
+This program requires the wxWidgets libraries, which includes the
+wx-config utility. The wx-config utility is used to tell us which flags
+we should pass to the compiler, and which flags we should pass to the
+linker; they are many, so the utility solves this problem elegantly.
+
+Aparently, however, we cannot run this utility on your computer. This
+problem is likely caused because the program is not in your PATH
+environment variable or because you just don't have the program --- and
+you, therefore, probably never installed the wxWidgets libraries. 
+
+To compile this program, please do exactly one of the following: (1)
+make sure that ``which'' can find wx-config, (2) run wx-config --libs
+--cxxflags and add the output to the first line of conf-wx, (3) write
+the flags yourself in the first line of conf-wx.
+
+Then say ``make'' again. Then ``make install.''
